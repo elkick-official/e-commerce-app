@@ -77,20 +77,21 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 4. If you don't want to run the php artisan serve every time then follow below step.
 
-    - 4.1 make copy of server.php and name it index.php
-    - 4.2 from public directory copy .htaccess file and past in root - directory where index.php and serve.php exists.
-    - 4.3 now you are able to run project in browse direct without php artisan command, Type localhost/project-name
+    - 4.1 make copy of **server.php** and name it **index.php**
+    - 4.2 from public directory copy **.htaccess** file and past in root - directory where **index.php** and **serve.php** exists.
+    - 4.3 now you are able to run project in browse direct without php artisan command, Type **localhost/project-name**
 
-5. Create your database into phpmyadmin incase you used mysql and set below setting into .env file for connection with database.
+5. Create your database into phpmyadmin incase you used mysql and set below setting into **.env** file for connection with database.
 
--   DB_CONNECTION=mysql
--   DB_HOST=127.0.0.1 // host name
--   DB_PORT=3306 // port default mysql port is 3306
--   DB_DATABASE=e-commerce-app // name of database
--   DB_USERNAME=root // username
--   DB_PASSWORD= // password
+```php
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1 // host name
+DB_PORT=3306 // port default mysql port is 3306
+DB_DATABASE=e-commerce-app // name of database
+DB_USERNAME=root // username
+DB_PASSWORD= // password
+```
 
 6. for create table in that database run below command
-    - 6.1 laravel default provide three migration file which available inside
-      database/migration
+    - 6.1 laravel default provide three migration file which available inside **database/migration**
     - 6.2 php artisan migrate
