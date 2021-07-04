@@ -95,3 +95,76 @@ DB_PASSWORD= // password
 6. for create table in that database run below command
     - 6.1 laravel default provide three migration file which available inside **database/migration**
     - 6.2 php artisan migrate
+
+## Install the laravel UI package
+
+```php
+composer require laravel/ui
+```
+
+## Generate auth scaffolding
+
+```php
+php artisan ui vue --auth
+npm install
+npm run dev
+```
+
+## Laravel Role and Permission
+
+This package can be used with Laravel 6.0 or higher.
+**[RoleAndPermission](https://spatie.be/docs/laravel-permission/v4/installation-laravel)**
+
+```php
+composer require spatie/laravel-permission
+
+inside config/app.php
+'providers' => [
+    Spatie\Permission\PermissionServiceProvider::class,
+];
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+php artisan config:clear
+php artisan migrate
+
+```
+
+## Basic Usage of Spatie
+
+-First, add the Spatie\Permission\Traits\HasRoles trait to your User model(s):
+
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    use HasRoles;
+    // ...
+}
+```
+
+## Create Role for System
+
+```php
+    // create seeder
+    php artisan make:seeder RoleSeeder
+
+    // run seeder
+    php artisan db:seed --class=RoleSeeder
+
+    // create another seeder for create and assing role to admin.
+    php artisan make:seeder AdminSeeder
+
+    // add following in to AdminSeeder  make sure impore role and user model.
+    $adminData = [
+            'name'=>'admin',
+            'email'=>'admin@admin.com',
+            'password'=>Hash::make('12345678')
+        ];
+    User::create($adminData)->assignRole(Role::where('name','admin')->first());
+
+    // run following command for execute seeder.
+    php artisan db:seed --class=AdminSeeder
+```
